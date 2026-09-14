@@ -1,0 +1,19 @@
+{
+  "name": "workflow-mapping",
+  "owner": {
+    "name": "Benali",
+    "url": "https://github.com/BenaliHQ"
+  },
+  "metadata": {
+    "description": "Benali Work Architecture workflow-mapping plugin for Claude Code and compatible agent hosts."
+  },
+  "plugins": [
+    {
+      "name": "workflow-mapping",
+      "source": "./",
+      "description": "Work Architecture methodology \u2014 12 skills for mapping business workflows into ops-map-ready structure and organizational function charts. Handles transcripts, ops map entries, files, sparse input, live client interviews, and research-driven gap analysis, and Atlas-branded PDF visualization.",
+      "version": "1.5.0",
+      "category": "methodology"
+    }
+  ]
+}
