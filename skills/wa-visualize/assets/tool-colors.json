@@ -1,0 +1,30 @@
+{
+ "_note": "One identity hue per tool, by name, so a tool looks the same on every map and every client. Values are --cat-N in benali-review-theme.css (benali-design apps --app-category-N). Hue 4 (amber) is never used: it reads as the trigger pill. Unknown tools get a stable hue from _free_hues. Add a tool here rather than letting it fall back.",
+ "_free_hues": [
+  1,
+  2,
+  3,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "JobTread": 1,
+ "Quo": 2,
+ "Google Sheets": 3,
+ "Adaptive": 5,
+ "Granola": 6,
+ "Gmail": 7,
+ "Google Drive": 8,
+ "City permit portal": 9,
+ "Apple Notes": 10,
+ "QuickBooks": 3,
+ "Slack": 6,
+ "ClickUp": 5,
+ "Asana": 7,
+ "Microsoft Outlook": 8,
+ "Microsoft Excel": 3,
+ "Notion": 10
+}

@@ -39,7 +39,7 @@ Verify the install by running `/wa-primer` — it should load a 5-minute orienta
 | `/wa-function-chart` | Parent rules for the chart. |
 | `/wa-function-chart architect` | Three or more condensed maps to a function chart with a Workflow Update Patch. |
 | `/wa-function-chart gap-analysis` | Chart review: ownership, drift, coverage, tooling. |
-| `/wa-visualize` | Map to print PDF, web page, or session questions document. |
+| `/wa-visualize` | Maps to a client review site (a page per workflow plus a review page for open questions), or a print PDF. |
 | `/wa-feedback` | File feedback on the skills as a GitHub issue. |
 
 ### Reference docs (alongside the plugin)
