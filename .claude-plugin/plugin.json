@@ -1,7 +1,7 @@
 {
   "name": "workflow-mapping",
-  "description": "Work Architecture methodology \u2014 12 skills for mapping business workflows into ops-map-ready structure and organizational function charts. Handles transcripts, ops map entries, files, sparse input, live client interviews, and research-driven gap analysis, a client review site with in-page answers, and Atlas-branded PDF visualization.",
-  "version": "1.6.0",
+  "description": "Work Architecture methodology \u2014 12 skills for mapping business workflows into ops-map-ready structure and organizational function charts. Handles transcripts, ops map entries, files, sparse input, live client interviews, and research-driven gap analysis, a client review site with in-page answers, and Benali Business-system PDF visualization.",
+  "version": "1.7.0",
   "author": {
     "name": "Benali",
     "url": "https://github.com/BenaliHQ"

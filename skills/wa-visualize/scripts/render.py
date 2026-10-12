@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render an ops-map Workflow Map markdown file to Atlas-branded print HTML."""
+"""Render an ops-map Workflow Map markdown file to Benali-branded print HTML."""
 
 import argparse
 import copy
@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 
-UNKNOWN = "UNKNOWN — not in source"
+UNKNOWN = "UNKNOWN: not in source"
 
 FIELD_RE = re.compile(r"^\*\*(?P<label>[^:*]+):\*\*\s*$")
 HEADING_RE = re.compile(r"^(?P<marks>#{2,4})\s+(?P<title>.+?)\s*$")
@@ -53,7 +53,7 @@ NOTES_COLUMN_LIMIT = 548
 PROCESS_GAP = 10
 
 # Notes-table geometry, used only to estimate pagination height. Values track
-# the `.note-table` rules in assets/atlas-workflow-theme.css. The width is the
+# the `.note-table` rules in assets/benali-print-theme.css. The width is the
 # NARROW (two-column) notes track — tables also render in the single-column
 # track, so estimating against the narrow one keeps pagination conservative.
 NOTES_TABLE_WIDTH_PX = 457.0
@@ -980,7 +980,7 @@ def render_cover(data):
     frontmatter = data["frontmatter"]
     draft_badge = ""
     if frontmatter.get("status", "").strip().lower() == "draft":
-        draft_badge = '<div class="draft-badge">DRAFT — PENDING OPERATOR REVIEW</div>'
+        draft_badge = '<div class="draft-badge">Draft, pending operator review</div>'
 
     rail_cards = []
     for phase in data["phases"]:
@@ -997,7 +997,7 @@ def render_cover(data):
     return f"""
     <div class="page page--grid cover">
       <div class="cover-top">
-        <div class="kicker">WORK ARCHITECTURE — WORKFLOW MAP</div>
+        <div class="kicker">Work Architecture: workflow map</div>
         {draft_badge}
       </div>
       <h1>{emphasize_title(workflow["title"])}</h1>
@@ -1187,13 +1187,13 @@ def render_document(data, css):
 
 def load_theme_css():
     script_dir = Path(__file__).resolve().parent
-    css_path = script_dir.parent / "assets" / "atlas-workflow-theme.css"
+    css_path = script_dir.parent / "assets" / "benali-print-theme.css"
     return css_path.read_text(encoding="utf-8")
 
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(
-        description="Render an ops-map Workflow Map markdown file to Atlas-branded print HTML."
+        description="Render an ops-map Workflow Map markdown file to Benali-branded print HTML."
     )
     parser.add_argument("workflow", help="Path to workflow markdown file")
     parser.add_argument("-o", "--output", required=True, help="Output HTML path")

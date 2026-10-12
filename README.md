@@ -7,7 +7,7 @@ Benali's methodology for mapping how a business works. Produces two complementar
 
 Both share one atomic unit: the **Core Activity** (action verb + object + context — under 15 words, passes the 5 tests).
 
-This repo is the public mirror of Benali's workflow-mapping plugin. It contains the methodology reference and a Claude Code plugin that teaches Claude how to produce ops-map-ready workflow output.
+This repo is the source of truth for Benali's Work Architecture skills (operator decision 2026-10-12). It supersedes the older claude.ai uploads (function-chart-architect, function-chart-builder, function-chart-gap-analysis, workflow-architect, workflow-builder, workflow-gap-analysis). All rendered output follows the Benali Business system from BenaliHQ/benali-design. It contains the methodology reference and a Claude Code plugin that teaches Claude how to produce ops-map-ready workflow output.
 
 ## Install (one line)
 

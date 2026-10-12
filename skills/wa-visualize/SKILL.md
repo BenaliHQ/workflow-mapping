@@ -136,6 +136,6 @@ It refuses to render when an update or question points at an activity that is no
 - Edit the map to make it render. Fix the map through the mapping skills, then re-render.
 - Ship a PDF without the page-count and thumbnail check.
 - Hide a DRAFT badge or UNKNOWN tag.
-- Add a color or hex value that is not in a theme's token block. Print colours live in `assets/atlas-workflow-theme.css`; site colours live in `assets/benali-review-theme.css`, synced from benali-design (Business system tokens, App system category hues). Re-sync from the design system; never invent a value.
+- Add a color or hex value that is not in a theme's token block. Print colours live in `assets/benali-print-theme.css`; site colours live in `assets/benali-review-theme.css`, synced from benali-design (Business system tokens, App system category hues). Re-sync from the design system; never invent a value.
 - Put a person's name in a question, an update, or any site copy. Roles only.
 - Show SOP checklists on the site.

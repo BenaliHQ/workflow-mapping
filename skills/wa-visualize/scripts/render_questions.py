@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Render the operator questions from one or more Workflow Maps into a single
-Atlas-branded, print-ready questions document (HTML -> Chrome -> PDF).
+Benali-branded, print-ready questions document (HTML -> Chrome -> PDF).
 
 Built for mapping sessions: one document holding every open question, grouped
 by workflow, each question carrying its phase anchor so the session can walk
@@ -124,7 +124,7 @@ def paginate(questions, warnings, context):
 DOC_CSS = """
 .q-cover-rail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 0.24in; }
 .q-cover-card {
-  background: var(--bone); border: 1px solid var(--line); border-radius: 10px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
   padding: 13px 16px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
 }
 .q-cover-card .t { font-size: 14px; font-weight: 700; }
@@ -133,14 +133,14 @@ DOC_CSS = """
 .q-doc-title { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 4px 0 0; }
 .q-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.34in; align-items: start; }
 .q-entry { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-faint); }
-.q-entry-num { color: var(--majorelle); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; }
+.q-entry-num { color: var(--majorelle); font-size: 11px; font-weight: 700; letter-spacing: 0; }
 .q-entry-phase {
   display: inline-block; border: 1px solid var(--line-strong); border-radius: 4px;
-  color: var(--slate-mid); font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em;
-  padding: 0 5px; text-transform: uppercase; margin-bottom: 3px;
+  color: var(--ink-mid); font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 0 5px; text-transform: none; margin-bottom: 3px;
 }
 .q-entry-text { font-size: 12.5px; font-weight: 600; line-height: 1.4; margin: 0; }
-.q-entry-context { color: var(--slate-mid); font-size: 11px; line-height: 1.4; margin: 3px 0 0; }
+.q-entry-context { color: var(--ink-mid); font-size: 11px; line-height: 1.4; margin: 3px 0 0; }
 .q-answer-line { border-bottom: 1px dotted var(--line-strong); height: 16px; margin-top: 6px; }
 """
 
