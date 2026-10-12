@@ -23,7 +23,7 @@
     </div>
   </header>
 
-  <div class="bar">
+  <div class="bar"{{HIDE}}>
     <div class="legend" aria-label="Status"><span class="lg-active">Active</span><span class="lg-draft">Draft</span><span class="lg-gap">Gap</span></div>
     <div class="tools">
       <label for="who">Your name</label>
@@ -35,7 +35,7 @@
   </div>
   <textarea class="fallback" id="fallback" rows="8" hidden aria-label="Your responses, ready to copy"></textarea>
 
-  <nav class="tabs" aria-label="Workflows">{{TABS}}<label class="toggle" for="only"><input type="checkbox" id="only"> Show questions only</label></nav>
+  <nav class="tabs" aria-label="Workflows"{{HIDE}}>{{TABS}}<label class="toggle" for="only"><input type="checkbox" id="only"> Show questions only</label></nav>
 
   {{SECTIONS}}
 

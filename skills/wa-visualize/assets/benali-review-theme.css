@@ -119,6 +119,10 @@ body.bz-memo {
   /* map: phase cards on the left, question cards as margin notes on the right */
   .map { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr) 330px; column-gap: 24px; align-items: start; }
   .map[hidden] { display: none; }
+  .bar[hidden], .tabs[hidden] { display: none; }
+  .nothing { padding: 48px 0; }
+  .nothing h2 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
+  .nothing p { color: var(--ink-mid); margin: 0; }
   .wf { display: grid; gap: 18px; }
   .wm-phase { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; }
   .ph { position: relative; padding: 20px 64px 20px 24px; color: #fff; background: linear-gradient(120deg, #0C1030 0%, #1A2057 100%); }

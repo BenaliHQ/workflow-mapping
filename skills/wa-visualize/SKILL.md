@@ -53,7 +53,7 @@ What the client sees, per workflow: each phase as its own card with a navy heade
 - `tab` is the short name on the review page tab; `title` defaults to the map's workflow title.
 - One map is fine. The tabs disappear and the review covers that workflow.
 
-`questions.json` (optional; no file means no review page). Keyed by map slug. Each question is pinned to the activity it is about:
+`questions.json` (optional; no file means no review page, and a file with no questions gives a review page that says there is nothing to review). Keyed by map slug. Each question is pinned to the activity it is about:
 
 ```json
 {"office-bidding-workflow": [
