@@ -1,22 +1,20 @@
-/* Derived from atlas-brand/brand-guidelines.md v1.1.0 (ratified 2026-06-19). Tokens are literal — never substitute. */
-
 :root {
-  --ivory:#f7f3ea;
-  --bone:#fcfaf4;
-  --cream:#efe8d9;
-  --taupe:#d9d0be;
-  --slate:#2e333b;
-  --slate-deep:#22262d;
-  --slate-mid:#5b626d;
-  --majorelle:#4a52d8;
-  --majorelle-soft:#9aa0ee;
-  --line:rgba(46,51,59,0.12);
-  --line-strong:rgba(46,51,59,0.26);
-  --line-faint:rgba(46,51,59,0.07);
-  --grid:rgba(46,51,59,0.09);
-  --font-atlas:"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --engineering-grid:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2028'%3E%3Cpath%20d='M28%200H0V28'%20fill='none'%20stroke='rgba(46,51,59,0.09)'%20stroke-width='1'/%3E%3C/svg%3E");
-  --benali-wordmark:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2271.0%20-697.0%204651.0%20697.0%22%20role%3D%22img%22%20aria-label%3D%22Benali%22%3E%20%3Cpath%20fill%3D%22%232e333b%22%20d%3D%22M71%200V-697H309Q411%20-697%20469.5%20-650.5Q528%20-604%20528%20-522Q528%20-472%20507.0%20-434.5Q486%20-397%20448%20-375Q506%20-356%20535.0%20-312.0Q564%20-268%20564%20-202Q564%20-107%20504.5%20-53.5Q445%200%20338%200ZM187%20-106H329Q449%20-106%20449%20-207Q449%20-255%20420.5%20-281.5Q392%20-308%20341%20-308H187ZM187%20-412H317Q361%20-412%20387.0%20-436.5Q413%20-461%20413%20-504Q413%20-545%20385.5%20-568.0Q358%20-591%20309%20-591H187ZM979.0%200V-697H1442.0V-594H1095.0V-409H1415.0V-305H1095.0V-103H1442.0V0ZM1859.0%200V-697H1979.0L2315.0%20-151H2286.0V-697H2402.0V0H2280.0L1947.0%20-547H1975.0V0ZM2784.0%200%203060.0%20-697H3148.0L3423.0%200H3297.0L3104.0%20-528L2911.0%200ZM2956.0%20-146%202992.0%20-249H3215.0L3253.0%20-146ZM3805.0%200V-697H3921.0V-103H4222.0V0ZM4606.0%200V-697H4722.0V0Z%22%2F%3E%20%3C%2Fsvg%3E');
+  /* Benali Business system tokens, synced from benali-design business/business.css §01
+     (itself synced from brand/brand.css). Wordmark from shared/logos/wordmark, placed as an
+     image, never re-typeset. If the design system moves, re-sync here; never invent a value. */
+  --paper:#FCFCFD;
+  --card:#FFFFFF;
+  --tray:#F5F6F8;
+  --navy:#0C1030;
+  --ink:#2E333B;
+  --ink-mid:#5B626D;
+  --majorelle:#4A52D8;
+  --majorelle-lift:#9AA0EE;
+  --line:rgba(46,51,59,0.10);
+  --line-strong:rgba(46,51,59,0.12);
+  --line-faint:rgba(46,51,59,0.06);
+  --font:"Hanken Grotesk", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --benali-wordmark:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%224451%22%20height%3D%22697%22%20viewBox%3D%2271.0%20-697.0%204451%20697%22%20role%3D%22img%22%20aria-label%3D%22Benali%22%20data-note%3D%22Benali%20wordmark%20-%20Hanken%20Grotesk%20600%20caps%2C%20%2B0.26em%20tracking%20%28ratified%202026-07-08%3B%20supersedes%20the%200.3em%20setting%29%22%3E%0A%20%20%3Cpath%20fill%3D%22%232e333b%22%20d%3D%22M338%200L71%200L71-697L309-697Q411-697%20469.5-650.5Q528-604%20528-522Q528-472%20507-434.5Q486-397%20448-375Q506-356%20535-312Q564-268%20564-202Q564-107%20504.5-53.5Q445%200%20338%200M187-308L187-106L329-106Q449-106%20449-207Q449-255%20420.5-281.5Q392-308%20341-308L187-308M187-591L187-412L317-412Q361-412%20387-436.5Q413-461%20413-504Q413-545%20385.5-568Q358-591%20309-591M1402%200L939%200L939-697L1402-697L1402-594L1055-594L1055-409L1375-409L1375-305L1055-305L1055-103L1402-103M1895%200L1779%200L1779-697L1899-697L2235-151L2206-151L2206-697L2322-697L2322%200L2200%200L1867-547L1895-547M2791%200L2664%200L2940-697L3028-697L3303%200L3177%200L2984-528L2791%200M3133-146L2836-146L2872-249L3095-249M4062%200L3645%200L3645-697L3761-697L3761-103L4062-103M4522%200L4406%200L4406-697L4522-697%22/%3E%0A%3C/svg%3E");
 }
 
 @page {
@@ -35,9 +33,9 @@ body {
 }
 
 body {
-  background: var(--ivory);
-  color: var(--slate);
-  font-family: var(--font-atlas);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
   font-weight: 400;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -56,27 +54,24 @@ body {
   break-after: page;
   position: relative;
   padding: 0.52in 0.58in 0.48in;
-  background-color: var(--ivory);
+  background-color: var(--paper);
 }
 
 .page--grid {
-  background-color: var(--ivory);
-  background-image: var(--engineering-grid);
-  background-size: 28px 28px;
-  background-position: left top;
+  background-color: var(--paper);
 }
 
 .page--bone {
-  background-color: var(--bone);
+  background-color: var(--card);
 }
 
 .kicker {
-  color: var(--slate-mid);
+  color: var(--majorelle);
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .wordmark {
@@ -96,7 +91,7 @@ body {
 }
 
 .footer-meta {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9.5px;
   line-height: 1.35;
   max-width: 6.6in;
@@ -130,20 +125,20 @@ body {
 
 .draft-badge {
   align-self: flex-start;
-  background: var(--slate-deep);
-  border: 1px solid var(--slate-deep);
+  background: var(--navy);
+  border: 1px solid var(--navy);
   border-radius: 999px;
-  color: var(--ivory);
+  color: var(--paper);
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   line-height: 1;
   padding: 8px 12px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cover h1 {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 54px;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -153,11 +148,11 @@ body {
 }
 
 .title-emphasis {
-  color: var(--majorelle);
+  color: inherit;
 }
 
 .workflow-description {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 14px;
   line-height: 1.46;
   margin: 0 0 0.2in;
@@ -173,7 +168,7 @@ body {
 }
 
 .state-card {
-  background: var(--bone);
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 6px;
   min-height: 0.7in;
@@ -181,7 +176,7 @@ body {
 }
 
 .state-copy {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 13px;
   line-height: 1.35;
   margin-top: 6px;
@@ -189,7 +184,7 @@ body {
 
 .state-arrow {
   align-items: center;
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   display: flex;
   font-size: 21px;
   justify-content: center;
@@ -202,7 +197,7 @@ body {
 }
 
 .rail-card {
-  background: color-mix(in srgb, var(--bone) 82%, transparent);
+  background: color-mix(in srgb, var(--card) 82%, transparent);
   border: 1px solid var(--line);
   border-radius: 6px;
   min-height: 0.82in;
@@ -219,7 +214,7 @@ body {
 }
 
 .rail-title {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -228,12 +223,12 @@ body {
 }
 
 .rail-role {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  letter-spacing: 0;
   line-height: 1.25;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .phase-page {
@@ -267,7 +262,7 @@ body {
 }
 
 .phase-title {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 31px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -276,23 +271,23 @@ body {
 }
 
 .continued-label {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 11px;
-  font-style: italic;
+  font-style: normal;
   white-space: nowrap;
 }
 
 .phase-role {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .handoff-banner {
-  background: var(--bone);
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 6px;
   margin: 15px 0 13px;
@@ -300,7 +295,7 @@ body {
 }
 
 .handoff-copy {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 11.6px;
   line-height: 1.32;
   margin-top: 5px;
@@ -314,7 +309,7 @@ body {
 }
 
 .process-card {
-  background: var(--bone);
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 6px;
   overflow: hidden;
@@ -326,17 +321,17 @@ body {
 }
 
 .process-kicker {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   line-height: 1.2;
   margin-bottom: 4px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .process-title {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -345,10 +340,10 @@ body {
 }
 
 .activity-number {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   margin-right: 8px;
 }
 
@@ -359,17 +354,17 @@ body {
 }
 
 .meta-label {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 8.8px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0;
   line-height: 1.15;
   margin-bottom: 4px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .meta-value {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 10.6px;
   line-height: 1.25;
 }
@@ -391,7 +386,7 @@ body {
 }
 
 .status-dot {
-  border: 1.5px solid var(--slate-mid);
+  border: 1.5px solid var(--ink-mid);
   border-radius: 999px;
   display: inline-block;
   height: 8px;
@@ -405,7 +400,7 @@ body {
 }
 
 .activity-title {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
@@ -413,7 +408,7 @@ body {
 }
 
 .activity-flow {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 10.2px;
   line-height: 1.32;
 }
@@ -425,14 +420,14 @@ body {
 }
 
 .sub-function {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   line-height: 1.15;
   max-width: 1.55in;
   text-align: right;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .gap-tag,
@@ -440,15 +435,15 @@ body {
 .unknown-tag {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   display: inline-block;
   font-size: 8.6px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1;
   padding: 3px 5px 2px;
-  text-transform: uppercase;
+  text-transform: none;
   vertical-align: 0.08em;
 }
 
@@ -457,13 +452,13 @@ body {
 }
 
 .unknown-copy {
-  color: var(--slate-mid);
-  font-style: italic;
+  color: var(--ink-mid);
+  font-style: normal;
 }
 
 .sop-list {
   border-left: 1px solid var(--line);
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9.7px;
   line-height: 1.3;
   list-style: none;
@@ -490,7 +485,7 @@ body {
 }
 
 .notes-title {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -513,7 +508,7 @@ body {
 }
 
 .note-heading {
-  color: var(--slate);
+  color: var(--ink);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -523,7 +518,7 @@ body {
 
 .note-list,
 .question-list {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 10.5px;
   line-height: 1.34;
   margin: 0;
@@ -540,13 +535,13 @@ body {
 }
 
 .note-copy {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 10.5px;
   line-height: 1.34;
   margin: 0 0 6px;
 }
 
-/* Markdown tables inside Notes & Assumptions. Hairline rules only — no fills,
+/* Markdown tables inside Notes & Assumptions. Hairline rules only : no fills,
    no Majorelle. Type sits a half-step under the surrounding note copy. */
 .note-table-wrap {
   margin: 6px 0 8px;
@@ -555,7 +550,7 @@ body {
 
 .note-table {
   border-collapse: collapse;
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 9.5px;
   line-height: 1.3;
   table-layout: auto;
@@ -572,21 +567,21 @@ body {
 
 .note-table th {
   border-bottom: 1px solid var(--line-strong);
-  color: var(--slate);
+  color: var(--ink);
   font-size: 8.6px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .empty-note {
-  color: var(--slate-mid);
+  color: var(--ink-mid);
   font-size: 11px;
-  font-style: italic;
+  font-style: normal;
 }
 
 strong {
-  color: var(--slate);
+  color: var(--ink);
   font-weight: 700;
 }
 

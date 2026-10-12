@@ -53,7 +53,7 @@ What the client sees, per workflow: each phase as its own card with a navy heade
 - `tab` is the short name on the review page tab; `title` defaults to the map's workflow title.
 - One map is fine. The tabs disappear and the review covers that workflow.
 
-`questions.json` (optional; no file means no review page). Keyed by map slug. Each question is pinned to the activity it is about:
+`questions.json` (optional; no file means no review page, and a file with no questions gives a review page that says there is nothing to review). Keyed by map slug. Each question is pinned to the activity it is about:
 
 ```json
 {"office-bidding-workflow": [
@@ -136,6 +136,6 @@ It refuses to render when an update or question points at an activity that is no
 - Edit the map to make it render. Fix the map through the mapping skills, then re-render.
 - Ship a PDF without the page-count and thumbnail check.
 - Hide a DRAFT badge or UNKNOWN tag.
-- Add a color or hex value that is not in a theme's token block. Print colours live in `assets/atlas-workflow-theme.css`; site colours live in `assets/benali-review-theme.css`, synced from benali-design (Business system tokens, App system category hues). Re-sync from the design system; never invent a value.
+- Add a color or hex value that is not in a theme's token block. Print colours live in `assets/benali-print-theme.css`; site colours live in `assets/benali-review-theme.css`, synced from benali-design (Business system tokens, App system category hues). Re-sync from the design system; never invent a value.
 - Put a person's name in a question, an update, or any site copy. Roles only.
 - Show SOP checklists on the site.

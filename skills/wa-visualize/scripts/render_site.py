@@ -3,7 +3,8 @@
 
 Writes, into the output folder:
   index.html          the workflows, plus a review card when there are open questions
-  review.html         every workflow with question cards, response boxes, and Copy responses
+  review.html         every workflow with question cards, response boxes, and Copy responses;
+                      when questions.json exists but holds none, a page saying there is nothing to review
   <slug>.html         one read-only page per workflow (no questions)
   assets/benali-review-theme.css
 
@@ -218,9 +219,16 @@ def main():
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
     shutil.copy(os.path.join(ASSETS, "benali-review-theme.css"), os.path.join(out, "assets"))
 
+    has_review = bool(total) or bool(cfg.get("questions"))
     if total:
         page = fill(tpl("site-review.html"), TABS="".join(tabs) if len(maps) > 1 else "", SECTIONS="".join(secs),
-                    TOTAL=total, SINGLE=" single" if len(maps) == 1 else "", **common)
+                    TOTAL=total, SINGLE=" single" if len(maps) == 1 else "", HIDE="", **common)
+        open(os.path.join(out, "review.html"), "w").write(page)
+    elif has_review:
+        # Keep the review URL working once every question is answered, instead of leaving a stale page behind.
+        empty = ('<section class="nothing"><h2>Nothing to review</h2>'
+                 '<p>Every open question on these workflows has been answered. New questions will appear here.</p></section>')
+        page = fill(tpl("site-review.html"), TABS="", SECTIONS=empty, TOTAL=0, SINGLE=" single", HIDE=" hidden", **common)
         open(os.path.join(out, "review.html"), "w").write(page)
     for m in maps:
         sec, _, (np, npr, na) = build(m["slug"], m["items"], updates, questions, False, [])
@@ -230,9 +238,11 @@ def main():
         cards.append(f'<a class="wcard" href="{link(m["slug"])}"><span class="wname">{E(m["title"])}</span><span class="wstats">{st}</span></a>')
     review_card = (f'<a class="review" href="{link("review")}"><div><p class="k">Review</p><h2>'
                    f'{"All workflows" if len(maps) > 1 else "The workflow"} with open questions</h2><p>{total} question{"s" if total != 1 else ""}. '
-                   f'Answer them in place, then copy your responses into an email.</p></div><span class="go">Open review</span></a>') if total else ""
+                   f'Answer them in place, then copy your responses into an email.</p></div><span class="go">Open review</span></a>') if total else (
+                   f'<a class="review" href="{link("review")}"><div><p class="k">Review</p><h2>Nothing to review</h2>'
+                   f'<p>Every open question has been answered.</p></div><span class="go">Open review</span></a>' if has_review else "")
     open(os.path.join(out, "index.html"), "w").write(fill(tpl("site-index.html"), CARDS="".join(cards), REVIEW=review_card, **common))
-    print(f"Wrote {out}: index, {'review, ' if total else ''}{len(maps)} workflow page(s); {total} open question(s)")
+    print(f"Wrote {out}: index, {'review, ' if has_review else ''}{len(maps)} workflow page(s); {total} open question(s)")
 
 
 if __name__ == "__main__":
