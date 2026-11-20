@@ -2,7 +2,7 @@
 """wa-visualize `site` output: a client review site for one or more workflow maps.
 
 Writes, into the output folder:
-  index.html          the workflows, plus a review card when there are open questions
+  index.html          the workflows, plus a review card when there are open questions (none once all are answered)
   review.html         every workflow with question cards, response boxes, and Copy responses;
                       when questions.json exists but holds none, a page saying there is nothing to review
   <slug>.html         one read-only page per workflow (no questions)
@@ -20,6 +20,19 @@ import argparse, html, json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(HERE, "..", "assets")
+sys.path.insert(0, HERE)
+from render import UNKNOWN, extract_process_trigger, extract_process_end_state  # noqa: E402
+
+
+def process_states(desc):
+    """Trigger and end state of a process, read from its description ("Triggered by ...", "Ends when ...")."""
+    out = []
+    for fn, lead in ((extract_process_trigger, r"^(?:Triggered|Begins|Starts)\s+(?:when|by|with)\s+"),
+                     (extract_process_end_state, r"^(?:The\s+process\s+)?ends\s+when\s+")):
+        v = fn(desc or "")
+        v = "" if v == UNKNOWN else re.sub(lead, "", v, flags=re.I)
+        out.append(v[:1].upper() + v[1:])
+    return out
 E = html.escape
 
 
@@ -85,7 +98,7 @@ def rowid(key, at):
 
 # ---------------------------------------------------------------- one workflow
 
-def build(key, items, updates, questions, with_q, problems):
+def build(key, items, updates, questions, with_q, problems, states=False):
     ch = updates.get(key, {})
     qs = questions.get(key, []) if with_q else []
     open_at = {q["at"] for q in questions.get(key, [])}  # an open question keeps an activity in draft
@@ -104,6 +117,14 @@ def build(key, items, updates, questions, with_q, problems):
         return (f'<a class="qm" href="#q-{key}-{first}" data-card="q-{key}-{first}" '
                 f'aria-label="{len(qa)} open question{"s" if len(qa) > 1 else ""}">{len(qa)}</a>', " hasq")
 
+    def te(trig, end):
+        if not (trig or end):
+            return ""
+        return ('<div class="te">'
+                + (f'<span class="pill trig">Trigger</span><span class="tv">{E(trig)}</span>' if trig else "")
+                + (f'<span class="pill endst">End state</span><span class="tv">{E(end)}</span>' if end else "")
+                + "</div>")
+
     def expandable(at, cls, head, detail):
         seen.add(at)
         mk, hq = marker(at)
@@ -120,13 +141,10 @@ def build(key, items, updates, questions, with_q, problems):
                 f'<span class="st st-{E(st)}">{E(st or "unknown")}</span></div>')
         desc = (f"<p>{E(note)}</p>" if note else "") + para(base_desc)
         detail = f'<div class="desc">{desc}</div>' if desc else ""
-        if trig or end:
-            detail += '<div class="te">'
-            if trig:
-                detail += f'<span class="pill trig">Trigger</span><span class="tv">{E(trig)}</span>'
-            if end:
-                detail += f'<span class="pill endst">End state</span><span class="tv">{E(end)}</span>'
-            detail += "</div>"
+        if states:
+            head += te(trig, end)
+        else:
+            detail += te(trig, end)
         rows.append(expandable(n, "", head, detail))
 
     for it in items:
@@ -141,6 +159,7 @@ def build(key, items, updates, questions, with_q, problems):
             p = it["proc"]
             role = (ch.get("proc:" + p["n"]) or {}).get("role", p["role"])
             head = f'<div class="t pr"><span class="n">{E(p["n"])}</span><span>{E(p["title"])}<span class="role">{E(role)}</span></span></div>'
+            head += te(*process_states(p.get("desc")))
             rows.append(expandable("proc:" + p["n"], " proc", head, f'<div class="desc">{para(p.get("desc"))}</div>' if para(p.get("desc")) else ""))
             continue
         c = ch.get(it["n"]) or {}
@@ -202,12 +221,12 @@ def main():
     maps = []
     for m in cfg["maps"]:
         wtitle, items = parse_map(rel(m["source"]))
-        maps.append({"slug": m["slug"], "tab": m.get("tab", wtitle), "title": m.get("title", wtitle), "items": items})
+        maps.append({"slug": m["slug"], "tab": m.get("tab", wtitle), "title": m.get("title", wtitle), "items": items, "states": bool(m.get("states"))})
 
     problems, secs, tabs, cards = [], [], [], []
     total = sum(len(questions.get(m["slug"], [])) for m in maps)
     for m in maps:
-        sec, n, _ = build(m["slug"], m["items"], updates, questions, True, problems)
+        sec, n, _ = build(m["slug"], m["items"], updates, questions, True, problems, m["states"])
         secs.append(sec.replace("{MAPNAME}", E(m["tab"])))
         tabs.append(f'<a href="#{m["slug"]}" class="tab" data-k="{m["slug"]}">{E(m["tab"])}<span class="cnt" data-cnt="{m["slug"]}">{n}</span></a>')
     if problems:
@@ -231,16 +250,14 @@ def main():
         page = fill(tpl("site-review.html"), TABS="", SECTIONS=empty, TOTAL=0, SINGLE=" single", HIDE=" hidden", **common)
         open(os.path.join(out, "review.html"), "w").write(page)
     for m in maps:
-        sec, _, (np, npr, na) = build(m["slug"], m["items"], updates, questions, False, [])
+        sec, _, (np, npr, na) = build(m["slug"], m["items"], updates, questions, False, [], m["states"])
         st = f"{np} phases · {npr} processes · {na} activities"
         open(os.path.join(out, m["slug"] + ".html"), "w").write(
             fill(tpl("site-workflow.html"), WTITLE=E(m["title"]), SECTION=sec, STATS=st, **common))
         cards.append(f'<a class="wcard" href="{link(m["slug"])}"><span class="wname">{E(m["title"])}</span><span class="wstats">{st}</span></a>')
     review_card = (f'<a class="review" href="{link("review")}"><div><p class="k">Review</p><h2>'
                    f'{"All workflows" if len(maps) > 1 else "The workflow"} with open questions</h2><p>{total} question{"s" if total != 1 else ""}. '
-                   f'Answer them in place, then copy your responses into an email.</p></div><span class="go">Open review</span></a>') if total else (
-                   f'<a class="review" href="{link("review")}"><div><p class="k">Review</p><h2>Nothing to review</h2>'
-                   f'<p>Every open question has been answered.</p></div><span class="go">Open review</span></a>' if has_review else "")
+                   f'Answer them in place, then copy your responses into an email.</p></div><span class="go">Open review</span></a>') if total else ""
     open(os.path.join(out, "index.html"), "w").write(fill(tpl("site-index.html"), CARDS="".join(cards), REVIEW=review_card, **common))
     print(f"Wrote {out}: index, {'review, ' if has_review else ''}{len(maps)} workflow page(s); {total} open question(s)")
 
