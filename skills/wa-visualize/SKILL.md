@@ -29,7 +29,7 @@ Use the directory the map lives in as the working directory unless the user name
 
 ## Site
 
-What the client sees, per workflow: each phase as its own card with a navy header; processes with their role; core activities with role, software pills (one fixed colour per tool) and status (active green, draft blue, gap orange). Clicking an activity opens its description, a yellow Trigger pill and a green End state pill. No SOP checklists appear. The review page adds a question card beside each activity that has one, with a response box; the reviewer types answers, then presses Copy responses and pastes the text into an email. Answers stay in the reviewer's own browser until they copy them.
+What the client sees, per workflow: each phase as its own card with a navy header; processes with their role; core activities with role, software pills (one fixed colour per tool) and status (active green, draft blue, gap orange). Each process card shows its Trigger and End state. Clicking an activity opens its description, a yellow Trigger pill and a green End state pill (on the card itself when the map sets `states`). No SOP checklists appear. The review page adds a question card beside each activity that has one, with a response box; the reviewer types answers, then presses Copy responses and pastes the text into an email. Answers stay in the reviewer's own browser until they copy them.
 
 ### 1. Write the inputs next to the maps
 
@@ -51,9 +51,10 @@ What the client sees, per workflow: each phase as its own card with a navy heade
 
 - `base` is the site path the pages are served from (`/apex` on a review site). Leave it empty to preview from disk.
 - `tab` is the short name on the review page tab; `title` defaults to the map's workflow title.
+- `"states": true` on a map shows every activity's Trigger and End state on the card, without a click; the description stays behind the click. Use it on the priority workflows a client reviews; leave it off on long maps like the end-to-end. Process cards always show both.
 - One map is fine. The tabs disappear and the review covers that workflow.
 
-`questions.json` (optional; no file means no review page, and a file with no questions gives a review page that says there is nothing to review). Keyed by map slug. Each question is pinned to the activity it is about:
+`questions.json` (optional; no file means no review page, and a file with no questions gives a review page that says there is nothing to review, and no review card on the index). Keyed by map slug. Each question is pinned to the activity it is about:
 
 ```json
 {"office-bidding-workflow": [
